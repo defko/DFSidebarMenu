@@ -115,7 +115,6 @@
     return [self applyBlurWithRadius:20 tintColor:tintColor saturationDeltaFactor:1.8 maskImage:nil];
 }
 
-
 - (UIImage *)applyDarkEffect
 {
     UIColor *tintColor = [UIColor colorWithWhite:0.11 alpha:0.73];

@@ -406,9 +406,20 @@ NSString* const DFSidebarMenuTitle = @"DFSidebarMenuTitle";
 
 - (UIImage *)blurredImageWithRadius:(CGFloat)radius withBlurType:(DFSideBarBlurType) blurType
 {
-    UIImage *image = [self applyExtraLightEffect];
+    UIImage* image = nil;
+    switch (blurType) {
+        case DFSideBarBlurTypeLight:
+            image = [self applyLightEffect];
+            break;
+        case DFSideBarBlurTypeDark:
+            image = [self applyDarkEffect];
+            break;
+        case DFSideBarBlurTypeNone:
+            image = self;
+            break;
+    }
     if (!image) {
-        NSLog(@"image is still nill :((");
+        NSLog(@"Image blurring result is nil");
     }
     return image;
 }
