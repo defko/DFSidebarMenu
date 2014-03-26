@@ -9,7 +9,7 @@
 #import "DFSidebarMenu.h"
 #import <objc/runtime.h>
 #import "DFSidebar.h"
-#import "GPUImageiOSImageEffect.h"
+#import "UIImage+ImageEffects.h"
 
 @interface DFSidebarMenu()
 
@@ -406,23 +406,7 @@ NSString* const DFSidebarMenuTitle = @"DFSidebarMenuTitle";
 
 - (UIImage *)blurredImageWithRadius:(CGFloat)radius withBlurType:(DFSideBarBlurType) blurType
 {
-    GPUImageiOSImageEffect *blurFilter = [[GPUImageiOSImageEffect alloc] init];
-    [blurFilter setBlurRadiusInPixels:radius];
-    switch (blurType) {
-        case DFSideBarBlurTypeDark:
-            blurFilter.effectType = GPUImageIOSImageEffectTypeDark;
-            break;
-        case DFSideBarBlurTypeLight:
-            blurFilter.effectType = GPUImageIOSImageEffectTypeLight;
-            break;
-        default:
-            break;
-    }
- 
-    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:self];
-    [stillImageSource addTarget:blurFilter];
- //   [stillImageSource processImage];
-    UIImage *image = [blurFilter imageByFilteringImage:self];
+    UIImage *image = [self applyExtraLightEffect];
     if (!image) {
         NSLog(@"image is still nill :((");
     }

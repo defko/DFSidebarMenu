@@ -21,19 +21,18 @@
 		6A7B8B7118E32D6F00DA9D47 /* DFSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B8B6A18E32D6F00DA9D47 /* DFSidebar.m */; };
 		6A7B8B7218E32D6F00DA9D47 /* DFSidebarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B8B6B18E32D6F00DA9D47 /* DFSidebarCell.xib */; };
 		6A7B8B7318E32D6F00DA9D47 /* DFSidebarMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B8B6D18E32D6F00DA9D47 /* DFSidebarMenu.m */; };
-		6A7B8B7418E32D6F00DA9D47 /* GPUImageiOSImageEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B8B7018E32D6F00DA9D47 /* GPUImageiOSImageEffect.m */; };
 		6A7B8B7718E32D7C00DA9D47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B8B7618E32D7C00DA9D47 /* AppDelegate.m */; };
 		6A7B8B8118E32D8500DA9D47 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B8B7A18E32D8500DA9D47 /* FirstViewController.m */; };
 		6A7B8B8218E32D8500DA9D47 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B8B7C18E32D8500DA9D47 /* SecondViewController.m */; };
 		6A7B8B8318E32D8500DA9D47 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B8B7E18E32D8500DA9D47 /* ThirdViewController.m */; };
 		6A7B8B8418E32D8500DA9D47 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B8B8018E32D8500DA9D47 /* ViewController.m */; };
 		6A7B8B8818E32D9600DA9D47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A7B8B8618E32D9600DA9D47 /* Main.storyboard */; };
-		6A7B8B9418E32DEA00DA9D47 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B8B9118E32DE200DA9D47 /* libGPUImage.a */; };
 		6A7B8B9618E32E3D00DA9D47 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B8B9518E32E3D00DA9D47 /* AVFoundation.framework */; };
 		6A7B8B9818E32E4200DA9D47 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B8B9718E32E4200DA9D47 /* OpenGLES.framework */; };
 		6A7B8B9A18E32E4E00DA9D47 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B8B9918E32E4E00DA9D47 /* CoreVideo.framework */; };
 		6A7B8B9C18E32E5500DA9D47 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B8B9B18E32E5500DA9D47 /* CoreMedia.framework */; };
 		6A7B8B9E18E32E6000DA9D47 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B8B9D18E32E6000DA9D47 /* QuartzCore.framework */; };
+		6A7B8BA318E337E000DA9D47 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B8BA218E337E000DA9D47 /* UIImage+ImageEffects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,20 +42,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6A7B8B0318E32D1600DA9D47;
 			remoteInfo = DFSidebarMenu;
-		};
-		6A7B8B9018E32DE200DA9D47 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6A7B8B8A18E32DE200DA9D47 /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
-			remoteInfo = GPUImage;
-		};
-		6A7B8B9218E32DE200DA9D47 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6A7B8B8A18E32DE200DA9D47 /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
-			remoteInfo = GPUImageTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -80,8 +65,6 @@
 		6A7B8B6B18E32D6F00DA9D47 /* DFSidebarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFSidebarCell.xib; sourceTree = "<group>"; };
 		6A7B8B6C18E32D6F00DA9D47 /* DFSidebarMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFSidebarMenu.h; sourceTree = "<group>"; };
 		6A7B8B6D18E32D6F00DA9D47 /* DFSidebarMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFSidebarMenu.m; sourceTree = "<group>"; };
-		6A7B8B6F18E32D6F00DA9D47 /* GPUImageiOSImageEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageiOSImageEffect.h; sourceTree = "<group>"; };
-		6A7B8B7018E32D6F00DA9D47 /* GPUImageiOSImageEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageiOSImageEffect.m; sourceTree = "<group>"; };
 		6A7B8B7518E32D7C00DA9D47 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6A7B8B7618E32D7C00DA9D47 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6A7B8B7918E32D8500DA9D47 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
@@ -93,12 +76,13 @@
 		6A7B8B7F18E32D8500DA9D47 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		6A7B8B8018E32D8500DA9D47 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6A7B8B8718E32D9600DA9D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
-		6A7B8B8A18E32DE200DA9D47 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "../../../../../../Downloads/GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = "<group>"; };
 		6A7B8B9518E32E3D00DA9D47 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6A7B8B9718E32E4200DA9D47 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		6A7B8B9918E32E4E00DA9D47 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		6A7B8B9B18E32E5500DA9D47 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		6A7B8B9D18E32E6000DA9D47 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6A7B8BA118E337E000DA9D47 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		6A7B8BA218E337E000DA9D47 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +95,6 @@
 				6A7B8B9A18E32E4E00DA9D47 /* CoreVideo.framework in Frameworks */,
 				6A7B8B9818E32E4200DA9D47 /* OpenGLES.framework in Frameworks */,
 				6A7B8B9618E32E3D00DA9D47 /* AVFoundation.framework in Frameworks */,
-				6A7B8B9418E32DEA00DA9D47 /* libGPUImage.a in Frameworks */,
 				6A7B8B0A18E32D1600DA9D47 /* CoreGraphics.framework in Frameworks */,
 				6A7B8B0C18E32D1600DA9D47 /* UIKit.framework in Frameworks */,
 				6A7B8B0818E32D1600DA9D47 /* Foundation.framework in Frameworks */,
@@ -169,7 +152,6 @@
 		6A7B8B0D18E32D1600DA9D47 /* DFSidebarMenu */ = {
 			isa = PBXGroup;
 			children = (
-				6A7B8B8918E32DD300DA9D47 /* Libraries */,
 				6A7B8B8618E32D9600DA9D47 /* Main.storyboard */,
 				6A7B8B7818E32D8500DA9D47 /* Menus */,
 				6A7B8B7F18E32D8500DA9D47 /* ViewController.h */,
@@ -215,23 +197,14 @@
 		6A7B8B6818E32D6F00DA9D47 /* DFSidebarMenu */ = {
 			isa = PBXGroup;
 			children = (
+				6A7B8BA018E337C100DA9D47 /* AppleBlurEffect */,
 				6A7B8B6918E32D6F00DA9D47 /* DFSidebar.h */,
 				6A7B8B6A18E32D6F00DA9D47 /* DFSidebar.m */,
 				6A7B8B6B18E32D6F00DA9D47 /* DFSidebarCell.xib */,
 				6A7B8B6C18E32D6F00DA9D47 /* DFSidebarMenu.h */,
 				6A7B8B6D18E32D6F00DA9D47 /* DFSidebarMenu.m */,
-				6A7B8B6E18E32D6F00DA9D47 /* GPUImageiOSImageEffect */,
 			);
 			path = DFSidebarMenu;
-			sourceTree = "<group>";
-		};
-		6A7B8B6E18E32D6F00DA9D47 /* GPUImageiOSImageEffect */ = {
-			isa = PBXGroup;
-			children = (
-				6A7B8B6F18E32D6F00DA9D47 /* GPUImageiOSImageEffect.h */,
-				6A7B8B7018E32D6F00DA9D47 /* GPUImageiOSImageEffect.m */,
-			);
-			path = GPUImageiOSImageEffect;
 			sourceTree = "<group>";
 		};
 		6A7B8B7818E32D8500DA9D47 /* Menus */ = {
@@ -247,21 +220,13 @@
 			path = Menus;
 			sourceTree = "<group>";
 		};
-		6A7B8B8918E32DD300DA9D47 /* Libraries */ = {
+		6A7B8BA018E337C100DA9D47 /* AppleBlurEffect */ = {
 			isa = PBXGroup;
 			children = (
-				6A7B8B8A18E32DE200DA9D47 /* GPUImage.xcodeproj */,
+				6A7B8BA118E337E000DA9D47 /* UIImage+ImageEffects.h */,
+				6A7B8BA218E337E000DA9D47 /* UIImage+ImageEffects.m */,
 			);
-			path = Libraries;
-			sourceTree = "<group>";
-		};
-		6A7B8B8B18E32DE200DA9D47 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6A7B8B9118E32DE200DA9D47 /* libGPUImage.a */,
-				6A7B8B9318E32DE200DA9D47 /* GPUImageTests.octest */,
-			);
-			name = Products;
+			path = AppleBlurEffect;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,12 +292,6 @@
 			mainGroup = 6A7B8AFB18E32D1600DA9D47;
 			productRefGroup = 6A7B8B0518E32D1600DA9D47 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 6A7B8B8B18E32DE200DA9D47 /* Products */;
-					ProjectRef = 6A7B8B8A18E32DE200DA9D47 /* GPUImage.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				6A7B8B0318E32D1600DA9D47 /* DFSidebarMenu */,
@@ -340,23 +299,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		6A7B8B9118E32DE200DA9D47 /* libGPUImage.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGPUImage.a;
-			remoteRef = 6A7B8B9018E32DE200DA9D47 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		6A7B8B9318E32DE200DA9D47 /* GPUImageTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = GPUImageTests.octest;
-			remoteRef = 6A7B8B9218E32DE200DA9D47 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6A7B8B0218E32D1600DA9D47 /* Resources */ = {
@@ -389,8 +331,8 @@
 				6A7B8B7118E32D6F00DA9D47 /* DFSidebar.m in Sources */,
 				6A7B8B8118E32D8500DA9D47 /* FirstViewController.m in Sources */,
 				6A7B8B8318E32D8500DA9D47 /* ThirdViewController.m in Sources */,
-				6A7B8B7418E32D6F00DA9D47 /* GPUImageiOSImageEffect.m in Sources */,
 				6A7B8B8218E32D8500DA9D47 /* SecondViewController.m in Sources */,
+				6A7B8BA318E337E000DA9D47 /* UIImage+ImageEffects.m in Sources */,
 				6A7B8B1418E32D1600DA9D47 /* main.m in Sources */,
 				6A7B8B7318E32D6F00DA9D47 /* DFSidebarMenu.m in Sources */,
 				6A7B8B7718E32D7C00DA9D47 /* AppDelegate.m in Sources */,
