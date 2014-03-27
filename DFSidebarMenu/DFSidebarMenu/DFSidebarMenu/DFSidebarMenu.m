@@ -89,13 +89,7 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
 
 - (void) addViewController:(UIViewController*) controller
 {
-    if ([controller isKindOfClass:[UINavigationController class]]) {
-        UINavigationController* navcon = (UINavigationController*)controller;
-        UIViewController *viewCon = navcon.topViewController;
-        viewCon.dfSidebarMenu = self;
-    } else {
-        controller.dfSidebarMenu = self;
-    }
+    controller.dfSidebarMenu = self;
     [self addController:controller isMenu:YES];
     self.centerController = controller;
     [self addShadow:controller];
@@ -427,8 +421,16 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
 
 @implementation UIViewController (DFSidebarWrapper)
 
-- (id)dfSidebarMenu {
+- (id)dfSidebarMenuCore {
     return objc_getAssociatedObject(self, @selector(dfSidebarMenu));
+}
+
+- (id)dfSidebarMenu {
+    id dfSideBarMenu = [self dfSidebarMenuCore];
+    if (!dfSideBarMenu && self.navigationController) {
+        dfSideBarMenu = [self.navigationController dfSidebarMenu];
+    }
+    return dfSideBarMenu;
 }
 
 - (void)setDfSidebarMenu:(id)dfSidebarMenu {

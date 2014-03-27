@@ -74,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="1377" y="-788"/>
         </scene>
-        <!--First View Controller-->
+        <!--First View Controller - First-->
         <scene sceneID="Qxz-yj-HTV">
             <objects>
                 <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="n8o-Qp-ZvI" customClass="FirstViewController" sceneMemberID="viewController">
@@ -83,23 +83,50 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ew5-Lz-cx5">
-                                <rect key="frame" x="26" y="169" width="30" height="30"/>
+                                <rect key="frame" x="119" y="106" width="82" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="asdf">
+                                <state key="normal" title="Show Detail">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showMenu:" destination="n8o-Qp-ZvI" eventType="touchUpInside" id="f8n-TP-Kip"/>
+                                    <segue destination="W2p-MG-0bX" kind="push" id="PLA-WW-Erb"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eos-8A-6Lw"/>
+                    <navigationItem key="navigationItem" title="First" id="eos-8A-6Lw">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="TD5-On-14Q">
+                            <connections>
+                                <action selector="showMenu:" destination="n8o-Qp-ZvI" id="TC2-2Z-yPn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXv-lJ-FBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1377" y="-76"/>
+        </scene>
+        <!--First Detail View Controller - Detail-->
+        <scene sceneID="0OJ-Un-Jkd">
+            <objects>
+                <viewController storyboardIdentifier="FirstDetailViewController" id="W2p-MG-0bX" customClass="FirstDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v1P-eC-685">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Detail" id="dcO-ET-owo">
+                        <barButtonItem key="rightBarButtonItem" title="Menu" id="YdV-N6-v30">
+                            <connections>
+                                <action selector="showMenu:" destination="W2p-MG-0bX" id="qfQ-I8-PZX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ky-xM-LkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1861" y="-76"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="mzj-T5-f1t">
