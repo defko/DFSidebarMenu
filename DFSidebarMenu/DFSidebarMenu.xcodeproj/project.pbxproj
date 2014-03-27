@@ -34,6 +34,7 @@
 		6A7B8B9E18E32E6000DA9D47 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7B8B9D18E32E6000DA9D47 /* QuartzCore.framework */; };
 		6A7B8BA318E337E000DA9D47 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B8BA218E337E000DA9D47 /* UIImage+ImageEffects.m */; };
 		6ACEC63518E435D60000BC51 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACEC63418E435D60000BC51 /* MenuViewController.m */; };
+		6ACEC63818E455390000BC51 /* FirstDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACEC63718E455390000BC51 /* FirstDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		6A7B8BA218E337E000DA9D47 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		6ACEC63318E435D60000BC51 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		6ACEC63418E435D60000BC51 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		6ACEC63618E455390000BC51 /* FirstDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstDetailViewController.h; sourceTree = "<group>"; };
+		6ACEC63718E455390000BC51 /* FirstDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +224,8 @@
 				6A7B8B7C18E32D8500DA9D47 /* SecondViewController.m */,
 				6A7B8B7D18E32D8500DA9D47 /* ThirdViewController.h */,
 				6A7B8B7E18E32D8500DA9D47 /* ThirdViewController.m */,
+				6ACEC63618E455390000BC51 /* FirstDetailViewController.h */,
+				6ACEC63718E455390000BC51 /* FirstDetailViewController.m */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ACEC63818E455390000BC51 /* FirstDetailViewController.m in Sources */,
 				6A7B8B8418E32D8500DA9D47 /* ViewController.m in Sources */,
 				6A7B8B7118E32D6F00DA9D47 /* DFSidebar.m in Sources */,
 				6A7B8B8118E32D8500DA9D47 /* FirstViewController.m in Sources */,

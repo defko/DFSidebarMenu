@@ -166,11 +166,13 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
 - (void) changeCenterControllerWithIdentifier:(NSString*)identifier menuIndex:(NSInteger) menuIndex animated:(BOOL) animated direction:(BOOL) isNext
 {
     UIViewController* centerController = [self checkViewControllerAtIndex:menuIndex andIdentifier:identifier];
+    centerController.view.hidden = NO;
     if (animated) {
         [self slideOutController:self.centerController direction:isNext];
         [self slideInController:centerController direction:!isNext];
     } else {
         [self removeController:self.centerController];
+        centerController.view.frame = self.view.frame;
         [self addViewController:centerController];
     }
     self.lastSelectedMenu = menuIndex;
@@ -245,6 +247,8 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
         controller.view.frame = frame;
     } completion:^(BOOL finished){
+        controller.view.hidden = YES;
+        [self pushBackAnimation:controller isShow:YES];
         [self removeController:controller];
     }];
 }
@@ -264,6 +268,8 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
         }];
         
     } completion:^(BOOL finished) {
+        controller.view.hidden = YES;
+        [self pushBackAnimation:controller isShow:YES];
         [self removeController:controller];
     }];
 }
@@ -280,7 +286,7 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
     controller.view.frame = frame;
     
     frame.origin.x = self.view.frame.size.width * 1.1 - frame.size.width;
-    
+    controller.view.hidden = NO;
     BOOL ios7 = [[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending;
     NSTimeInterval duration = ios7 ? 0.6 : 0.7;
     [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionTransitionNone animations:^{
