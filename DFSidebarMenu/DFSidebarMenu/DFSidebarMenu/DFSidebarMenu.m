@@ -158,13 +158,14 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
     }
 }
 
-- (void) changeCenterController:(UIViewController*) centerController menuIndex:(NSInteger) menuIndex
+- (void) changeCenterControllerWithIdentifier:(NSString*)identifier menuIndex:(NSInteger) menuIndex
 {
-    [self changeCenterController:centerController menuIndex:menuIndex animated:NO direction:NO];
+    [self changeCenterControllerWithIdentifier:identifier menuIndex:menuIndex animated:NO direction:NO];
 }
 
-- (void) changeCenterController:(UIViewController*) centerController menuIndex:(NSInteger) menuIndex animated:(BOOL) animated direction:(BOOL) isNext
+- (void) changeCenterControllerWithIdentifier:(NSString*)identifier menuIndex:(NSInteger) menuIndex animated:(BOOL) animated direction:(BOOL) isNext
 {
+    UIViewController* centerController = [self checkViewControllerAtIndex:menuIndex andIdentifier:identifier];
     if (animated) {
         [self slideOutController:self.centerController direction:isNext];
         [self slideInController:centerController direction:!isNext];
@@ -182,11 +183,15 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
     NSString* identifier = [self.dataSource identifierAtIndex:index];
     NSString* assertMsg = [NSString stringWithFormat:@"Identifier at index (%i) can not be nil",index];
     NSAssert(identifier, assertMsg);
-    
+    return [self checkViewControllerAtIndex:index andIdentifier:identifier];
+}
+
+- (UIViewController*) checkViewControllerAtIndex:(NSInteger) index andIdentifier:(NSString*) identifier
+{
     UIViewController *viewController = self.menuViewControllers[identifier];
     if (!viewController) {
         viewController = [self.dataSource viewControllerAtIndex:index withIdentifier:identifier];
-        assertMsg = [NSString stringWithFormat:@"Viewcontroller at index (%i) with indentifier (%@) can not be nil",index,identifier];
+        NSString* assertMsg = [NSString stringWithFormat:@"Viewcontroller at index (%i) with indentifier (%@) can not be nil",index,identifier];
         NSAssert(viewController, assertMsg);
         self.menuViewControllers[identifier] = viewController;
     } else {

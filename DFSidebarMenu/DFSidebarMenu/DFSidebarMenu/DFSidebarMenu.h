@@ -12,9 +12,8 @@
 
 - (void) showMenu;
 - (void) selectMenu:(NSInteger)menuIndex;
-- (void) changeCenterController:(UIViewController*) centerController menuIndex:(NSInteger) menuIndex animated:(BOOL) animated direction:(BOOL) isNext;
-- (void) changeCenterController:(UIViewController*) centerController menuIndex:(NSInteger) menuIndex;
-
+- (void) changeCenterControllerWithIdentifier:(NSString*)identifier menuIndex:(NSInteger) menuIndex;
+- (void) changeCenterControllerWithIdentifier:(NSString*)identifier menuIndex:(NSInteger) menuIndex animated:(BOOL) animated direction:(BOOL) isNext;
 @end
 
 @protocol DFSidebarDataSource

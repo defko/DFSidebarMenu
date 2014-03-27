@@ -55,4 +55,10 @@
     return menu[DFSidebarViewController];
 }
 
+- (NSString*) titleAtIndex:(NSInteger)menuIndex
+{
+    NSDictionary* menu = self.menu[menuIndex];
+    return menu[DFSidebarMenuTitle];
+}
+
 @end
