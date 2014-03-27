@@ -7,8 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "DFSidebarMenu.h"
-#import "FirstViewController.h"
+#import "MenuViewController.h"
 
 @interface ViewController ()
 
@@ -24,20 +23,11 @@
 
 - (IBAction)goAction:(id)sender
 {
-    DFSidebarMenu* sideBarMenu = [[DFSidebarMenu alloc] initWithBackgroundImage:[UIImage imageNamed:@"clear-bedroom-1136x640" ] andMenus:[self menus]];
-    sideBarMenu.sideBarBlurType = DFSideBarBlurTypeDark;
+    MenuViewController* sideBarMenu = [[MenuViewController alloc] initWithBackgroundImage:[UIImage imageNamed:@"clear-bedroom-1136x640" ]];
+    sideBarMenu.sideBarBlurType = DFSideBarBlurTypeLight;
     [self presentViewController:sideBarMenu animated:YES completion:nil];
 }
 
-- (NSArray*) menus
-{
-    UIViewController* first = [self.storyboard instantiateViewControllerWithIdentifier:@"FirstViewController"];
-    UIViewController* second = [self.storyboard instantiateViewControllerWithIdentifier:@"SecondViewController"];
-        UIViewController* third = [self.storyboard instantiateViewControllerWithIdentifier:@"ThirdViewController"];
-    NSDictionary* menu1 = @{DFSidebarViewController : first, DFSidebarMenuTitle: @"First"};
-    NSDictionary* menu2 = @{DFSidebarViewController : second, DFSidebarMenuTitle: @"Second", DFSidebarMenuIcon: @"settings"};
-    NSDictionary* menu3 = @{DFSidebarViewController : third, DFSidebarMenuTitle: @"Third"};
-    return @[menu1,menu2,menu3];
-}
+
 
 @end

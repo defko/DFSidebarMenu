@@ -13,7 +13,8 @@
 
 @interface DFSidebarMenu()
 
-@property (nonatomic,strong) NSArray* menus;
+@property (nonatomic,strong) NSMutableDictionary* menuViewControllers;
+
 @property (nonatomic,strong) UIViewController* centerController;
 @property (nonatomic,assign) NSInteger lastSelectedMenu;
 @property (nonatomic,strong) DFSidebar* sideBar;
@@ -22,26 +23,27 @@
 @property (nonatomic,strong) UIImageView* backgroundImageView;
 @property (nonatomic,assign) NSTimeInterval animationDuration;
 
-@property (nonatomic,strong) NSMutableArray* menuViewControllers;
+@property (nonatomic,weak) id dataSource;
+
 @end
 
 NSString* const DFSidebarViewController = @"DFSidebarViewController";
 NSString* const DFSidebarMenuIcon  = @"DFSidebarMenuIcon";
 NSString* const DFSidebarMenuTitle = @"DFSidebarMenuTitle";
+NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
 
 @implementation DFSidebarMenu
 
 #pragma mark - Init
 
-- (instancetype) initWithBackgroundImage:(UIImage*)image andMenus:(NSArray*)menus
+- (instancetype) initWithBackgroundImage:(UIImage*)image
 {
     self = [super init];
     if (self) {
         _backgroundImage = image;
-        _menus = menus;
-        self.menuViewControllers = [_menus valueForKey:DFSidebarViewController];
         _animationDuration = 0.3;
         _blurRadius = 3.f;
+        _menuViewControllers = [NSMutableDictionary new];
     }
     return self;
 }
@@ -49,15 +51,22 @@ NSString* const DFSidebarMenuTitle = @"DFSidebarMenuTitle";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    self.dataSource = [self dataSourceForSideBarMenu];
     [self setupUI];
+}
+
+- (id<DFSidebarDataSource>) dataSourceForSideBarMenu
+{
+    return nil;
 }
 
 - (void) setupUI
 {
     CGRect selfFrame = self.view.frame;
 
-    self.sideBar = [[DFSidebar alloc] initWithViewMenus:self.menus];
+    self.sideBar = [DFSidebar new];
     self.sideBar.delegate = self;
+    self.sideBar.dataSource = self.dataSource;
     self.sideBar.textColor = self.textColor;
     self.sideBar.circleColor = self.circleColor;
     self.sideBar.iconColor = self.iconColor;
@@ -68,7 +77,9 @@ NSString* const DFSidebarMenuTitle = @"DFSidebarMenuTitle";
     self.backgroundImageView = [[UIImageView alloc] initWithImage:self.backgroundImage];
     self.backgroundImageView.frame = CGRectMake(0, 0, CGRectGetMaxX(selfFrame), CGRectGetMaxY(selfFrame));
     [self.view addSubview:self.backgroundImageView];
-    [self addViewController:[self viewControllerAtIndex:0]];
+    
+    UIViewController* controller = [self viewControllerAtIndex:0];
+    [self addViewController:controller];
   
     if (self.sideBarBlurType != DFSideBarBlurTypeNone) {
         [self performSelector:@selector(updateBlurEffectInBackground) withObject:nil afterDelay:0.1];
@@ -119,7 +130,6 @@ NSString* const DFSidebarMenuTitle = @"DFSidebarMenuTitle";
     controller.view.layer.shadowOpacity = 0.8;
 }
 
-
 #pragma mark - DFSidebarDelegate
 
 - (void) showMenu
@@ -144,9 +154,7 @@ NSString* const DFSidebarMenuTitle = @"DFSidebarMenuTitle";
     if ([self shouldSelectMenu:menuIndex]) {
         if (self.lastSelectedMenu != menuIndex) {
             UIViewController *selectedController = [self viewControllerAtIndex:menuIndex];
-            
             BOOL isNextMenu = self.lastSelectedMenu > menuIndex;
-            
             [self slideOutController:self.centerController direction:isNextMenu];
             [self slideInController:selectedController direction:!isNextMenu];
             self.lastSelectedMenu = menuIndex;
@@ -173,14 +181,41 @@ NSString* const DFSidebarMenuTitle = @"DFSidebarMenuTitle";
     self.lastSelectedMenu = menuIndex;
 }
 
-- (UIViewController*) viewControllerAtIndex:(NSInteger)menuIndex
+#pragma mark - DFSidebarDataSource
+
+- (UIViewController*) viewControllerAtIndex:(NSInteger) index
 {
-    return self.menuViewControllers[menuIndex];
+    NSString* identifier = [self.dataSource identifierAtIndex:index];
+    NSString* assertMsg = [NSString stringWithFormat:@"Identifier at index (%i) can not be nil",index];
+    NSAssert(identifier, assertMsg);
+    
+    UIViewController *viewController = self.menuViewControllers[identifier];
+    if (!viewController) {
+        viewController = [self.dataSource viewControllerAtIndex:index withIdentifier:identifier];
+        assertMsg = [NSString stringWithFormat:@"Viewcontroller at index (%i) with indentifier (%@) can not be nil",index,identifier];
+        NSAssert(viewController, assertMsg);
+        self.menuViewControllers[identifier] = viewController;
+    } else {
+        if ([self.dataSource respondsToSelector:@selector(selectedViewController:atIndex:)]) {
+            [self.dataSource selectedViewController:viewController atIndex:index];
+        }
+    }
+    return viewController;
+}
+
+- (UIViewController*) viewControllerAtIndex:(NSInteger)menuIndex withIdentifier:(NSString*)identifier
+{
+    UIViewController *viewController = self.menuViewControllers[identifier];
+    return viewController;
 }
 
 - (BOOL) shouldSelectMenu:(NSInteger) menuIndex
 {
-    return YES;
+    BOOL shouldSelect = YES;
+    if ([self.dataSource respondsToSelector:@selector(shouldSelectMenuAtIndex:)]) {
+        shouldSelect = [self.dataSource shouldSelectMenuAtIndex:menuIndex];
+    }
+    return shouldSelect;
 }
 
 #pragma mark - Animations

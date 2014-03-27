@@ -9,19 +9,10 @@
 #import "DFSidebar.h"
 
 @interface DFSidebar ()
-@property (nonatomic,strong) NSArray* menus;
+//@property (nonatomic,strong) NSArray* menus;
 @end
 
 @implementation DFSidebar
-
-- (id)initWithViewMenus:(NSArray*)menus
-{
-    self = [super init];
-    if (self) {
-        _menus = menus;
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -66,7 +57,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.menus.count;
+    return [self.dataSource numberOfMenus];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,12 +71,16 @@
 
 - (void)configureCell:(DFSidebarCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary* menu = self.menus[indexPath.row];
-    cell.titleLabel.text = menu[DFSidebarMenuTitle];
+    if ([self.dataSource respondsToSelector:@selector(titleAtIndex:)]) {
+        cell.titleLabel.text = [self.dataSource titleAtIndex:indexPath.row];
+    }
     cell.titleLabel.textColor = self.textColor;
     cell.iconBtn.hidden = YES;
-    if (menu[DFSidebarMenuIcon]) {
-        UIImage *image = [UIImage imageNamed:menu[DFSidebarMenuIcon]];
+    UIImage* image;
+    if ([self.dataSource respondsToSelector:@selector(imageAtIndex:)]) {
+        image = [self.dataSource imageAtIndex:indexPath.row];
+    }
+    if (image) {
         if ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending && self.iconColor) {
             cell.icon.hidden = YES;
             cell.iconBtn.hidden = NO;

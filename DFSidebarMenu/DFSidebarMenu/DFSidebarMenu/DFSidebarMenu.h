@@ -17,6 +17,21 @@
 
 @end
 
+@protocol DFSidebarDataSource
+
+@required
+- (NSInteger) numberOfMenus;
+- (NSString*) identifierAtIndex:(NSInteger) menuIndex;
+- (UIViewController*) viewControllerAtIndex:(NSInteger) menuIndex withIdentifier:(NSString*)identifier;
+
+@optional
+- (NSString*) titleAtIndex:(NSInteger) menuIndex;
+- (UIImage*) imageAtIndex:(NSInteger) menuIndex;
+- (BOOL) shouldSelectMenuAtIndex:(NSInteger) menuIndex;
+- (void) selectedViewController:(UIViewController*) viewController atIndex:(NSInteger) menuIndex;
+
+@end
+
 typedef NS_ENUM(NSInteger, DFSideBarBlurType) {
     DFSideBarBlurTypeNone = 0,
     DFSideBarBlurTypeLight = 1,
@@ -26,6 +41,7 @@ typedef NS_ENUM(NSInteger, DFSideBarBlurType) {
 FOUNDATION_EXPORT NSString* const DFSidebarViewController;
 FOUNDATION_EXPORT NSString* const DFSidebarMenuIcon;
 FOUNDATION_EXPORT NSString* const DFSidebarMenuTitle;
+FOUNDATION_EXPORT NSString* const DFSidebarMenuIdentifier;
 
 @interface DFSidebarMenu : UIViewController<DFSidebarDelegate>
 
@@ -36,11 +52,9 @@ FOUNDATION_EXPORT NSString* const DFSidebarMenuTitle;
 @property (nonatomic,assign) DFSideBarBlurType sideBarBlurType;
 @property (nonatomic,assign) CGFloat blurRadius;
 
-- (instancetype) initWithBackgroundImage:(UIImage*)image andMenus:(NSArray*)menus;
+- (instancetype) initWithBackgroundImage:(UIImage*)image;
+- (id<DFSidebarDataSource>) dataSourceForSideBarMenu;
 
-#pragma mark - Public
-- (BOOL) shouldSelectMenu:(NSInteger) menuIndex;
-- (UIViewController*) viewControllerAtIndex:(NSInteger)menuIndex;
 @end
 
 @interface UIViewController (DFSidebarWrapper)

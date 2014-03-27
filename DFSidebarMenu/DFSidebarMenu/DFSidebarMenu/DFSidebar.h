@@ -10,11 +10,13 @@
 #import "DFSidebarMenu.h"
 
 @interface DFSidebar : UITableViewController
-- (id)initWithViewMenus:(NSArray*)menus;
+
 @property (nonatomic,weak) id<DFSidebarDelegate> delegate;
+@property (nonatomic,weak) id dataSource;
 @property (nonatomic,strong) UIColor *circleColor;
 @property (nonatomic,strong) UIColor *textColor;
 @property (nonatomic,strong) UIColor *iconColor;
+
 @end
 
 @interface DFSidebarCircleView : UIView
