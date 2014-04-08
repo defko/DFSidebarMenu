@@ -2,8 +2,9 @@ DFSidebarMenu
 =============
 
 Good looking sidebar menu :)
+Support ios6< and iPhone
 
-It is actually a beta version. I want to change few things in a future (for example this datasource thing :/) and add some new features to it.
+It is actually a beta version. I want to change few things in a future (for example this datasource thing :/, support iPad too) and add some new features to it.
 
 ![alt text](/DFSidebarMenu/DFSidebarMenu/Resources/Images/example1.png)
 ![alt text](/DFSidebarMenu/DFSidebarMenu/Resources/Images/example2.png)
