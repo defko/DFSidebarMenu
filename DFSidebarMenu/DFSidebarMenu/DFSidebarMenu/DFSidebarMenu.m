@@ -82,7 +82,12 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
     [self addViewController:controller];
   
     if (self.sideBarBlurType != DFSideBarBlurTypeNone) {
-        [self performSelector:@selector(updateBlurEffectInBackground) withObject:nil afterDelay:0.1];
+        if (self.blurBackground) {
+            [self performSelector:@selector(updateBackgroundBlurEffectInBackground) withObject:nil afterDelay:0.1];
+        }
+        if (self.blurSideBar) {
+            [self performSelector:@selector(updateSidebarBlurEffectInBackground) withObject:nil afterDelay:0.1];
+        }
     }
     self.lastSelectedMenu = 0;
 }
@@ -172,7 +177,9 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
         [self slideInController:centerController direction:!isNext];
     } else {
         [self removeController:self.centerController];
-        centerController.view.frame = self.view.frame;
+        CGRect frame = self.view.frame;
+        frame.origin.y = 0;
+        centerController.view.frame = frame;
         [self addViewController:centerController];
     }
     self.lastSelectedMenu = menuIndex;
@@ -369,8 +376,18 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
     [UIView animateWithDuration:self.animationDuration animations:^{
         self.sideBar.view.frame = frame;
     } completion:^(BOOL isFinished){
-        if (!isShow) { [self.sideBar.view removeFromSuperview]; }
+        [self afterSideBarAnimation:isShow];
     }];
+}
+
+- (void) afterSideBarAnimation:(BOOL) isShow
+{
+    if (!isShow) {
+        [self.sideBar.view removeFromSuperview];
+        
+    } else {
+        [self.sideBar sidebarDidAppear];
+    }
 }
 
 - (CATransform3D) pushBackTransform1WithView:(UIView*)view isLeft:(BOOL) isLeft
@@ -409,7 +426,7 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
 
 #pragma mark - Blur effect
 
-- (void) updateBlurEffectInBackground
+- (void) updateSidebarBlurEffectInBackground
 {
     self.sideBar.view.hidden = YES;
     UIImage* snapshot = [UIImage snapshotFromView:self.backgroundImageView withSize:self.sideBar.view.bounds];
@@ -417,15 +434,28 @@ NSString* const DFSidebarMenuIdentifier = @"DFSidebarMenuIdentifier";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UIImage *blurImage = [snapshot blurredImageWithRadius:self.blurRadius withBlurType:self.sideBarBlurType];
         dispatch_sync(dispatch_get_main_queue(), ^{
-            [self setLayerContents:blurImage];
+            [self setLayerContents:blurImage toView:self.sideBar.view];
         });
     });
 }
 
-- (void)setLayerContents:(UIImage *)image
+- (void) updateBackgroundBlurEffectInBackground
 {
-    self.sideBar.view.layer.contents = (id)image.CGImage;
-    self.sideBar.view.layer.contentsScale = image.scale;
+    self.sideBar.view.hidden = YES;
+    UIImage* snapshot = [UIImage snapshotFromView:self.backgroundImageView withSize:self.backgroundImageView.bounds];
+    self.sideBar.view.hidden = NO;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *blurImage = [snapshot blurredImageWithRadius:self.blurRadius withBlurType:self.sideBarBlurType];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self setLayerContents:blurImage toView:self.backgroundImageView];
+        });
+    });
+}
+
+- (void)setLayerContents:(UIImage *)image toView:(UIView*) view
+{
+    view.layer.contents = (id)image.CGImage;
+    view.layer.contentsScale = image.scale;
 }
 
 @end

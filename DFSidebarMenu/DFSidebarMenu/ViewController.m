@@ -23,8 +23,12 @@
 
 - (IBAction)goAction:(id)sender
 {
-    MenuViewController* sideBarMenu = [[MenuViewController alloc] initWithBackgroundImage:[UIImage imageNamed:@"clear-bedroom-1136x640" ]];
+    MenuViewController* sideBarMenu = [[MenuViewController alloc] initWithBackgroundImage:[UIImage imageNamed:@"background"]];
     sideBarMenu.sideBarBlurType = DFSideBarBlurTypeLight;
+    sideBarMenu.textColor = [UIColor colorWithRed:(75/255.f) green:(75/255.) blue:(75/255.f) alpha:1];
+    sideBarMenu.circleColor = [UIColor colorWithRed:(75/255.f) green:(75/255.) blue:(75/255.f) alpha:1];
+    sideBarMenu.blurSideBar = YES;
+    sideBarMenu.blurBackground = NO;
     [self presentViewController:sideBarMenu animated:YES completion:nil];
 }
 

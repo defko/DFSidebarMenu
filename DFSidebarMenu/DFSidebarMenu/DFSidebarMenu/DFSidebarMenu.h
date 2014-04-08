@@ -50,6 +50,8 @@ FOUNDATION_EXPORT NSString* const DFSidebarMenuIdentifier;
 @property (nonatomic,strong) UIColor *textColor;
 @property (nonatomic,assign) DFSideBarBlurType sideBarBlurType;
 @property (nonatomic,assign) CGFloat blurRadius;
+@property (nonatomic,assign) BOOL blurSideBar;
+@property (nonatomic,assign) BOOL blurBackground;
 
 - (instancetype) initWithBackgroundImage:(UIImage*)image;
 - (id<DFSidebarDataSource>) dataSourceForSideBarMenu;

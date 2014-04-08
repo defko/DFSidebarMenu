@@ -16,7 +16,7 @@
 @property (nonatomic,strong) UIColor *circleColor;
 @property (nonatomic,strong) UIColor *textColor;
 @property (nonatomic,strong) UIColor *iconColor;
-
+- (void) sidebarDidAppear;
 @end
 
 @interface DFSidebarCircleView : UIView

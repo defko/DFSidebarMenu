@@ -20,12 +20,6 @@
     [self setupUI];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.tableView reloadData];
-}
-
 - (void) setupUI
 {
     UINib* cellNib = [UINib nibWithNibName:@"DFSidebarCell" bundle:nil];
@@ -37,6 +31,12 @@
         self.tableView.contentInset = insets;
         self.tableView.scrollIndicatorInsets = insets;
     }
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -108,6 +108,16 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.delegate selectMenu:indexPath.row];
+}
+
+- (void) sidebarDidAppear
+{
+
+}
+
+- (void) sidebarDidDisAppear
+{
+
 }
 
 @end
