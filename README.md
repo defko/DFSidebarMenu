@@ -3,6 +3,9 @@ DFSidebarMenu
 
 Good looking menu
 
+![alt text](/DFSidebarMenu/DFSidebarMenu/Resources/Images/example1.png)
+![alt text](/DFSidebarMenu/DFSidebarMenu/Resources/Images/example2.png)
+
 Setup
 ----------
 Add DFSidebarMenu folder to your project folder.
