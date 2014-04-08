@@ -58,6 +58,7 @@ There is some other setter method
 ```
 
 Properties to customize menu
+```objectivec
 @property (nonatomic,strong) UIColor *circleColor;
 /*It works only on iOS7*/
 @property (nonatomic,strong) UIColor *iconColor;
@@ -69,3 +70,4 @@ Properties to customize menu
 @property (nonatomic,assign) BOOL blurSideBar;
 /*Add blur effect to background*/
 @property (nonatomic,assign) BOOL blurBackground;
+```
