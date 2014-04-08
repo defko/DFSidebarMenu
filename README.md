@@ -1,7 +1,9 @@
 DFSidebarMenu
 =============
 
-Good looking menu
+Good looking sidebar menu :)
+
+It is actually a beta version. I want to change few things in a future (for example this datasource thing :/) and add some new features to it.
 
 ![alt text](/DFSidebarMenu/DFSidebarMenu/Resources/Images/example1.png)
 ![alt text](/DFSidebarMenu/DFSidebarMenu/Resources/Images/example2.png)
@@ -74,3 +76,26 @@ Properties to customize menu
 /*Add blur effect to background*/
 @property (nonatomic,assign) BOOL blurBackground;
 ```
+
+In a menu controllers you have the following options:
+
+Open a menu
+```objectivec
+- (void) showMenu;
+```
+Change the current controller programatically:
+```objectivec
+- (void) changeCenterControllerWithIdentifier:(NSString*)identifier menuIndex:(NSInteger) menuIndex;
+- (void) changeCenterControllerWithIdentifier:(NSString*)identifier menuIndex:(NSInteger) menuIndex animated:(BOOL) animated direction:(BOOL) isNext;
+```
+Select a menu 
+```objectivec
+- (void) selectMenu:(NSInteger)menuIndex;
+```
+
+You can call these for example
+```objectivec
+[self.dfSidebarMenu showMenu];
+```
+
+Example in the project
