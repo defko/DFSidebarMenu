@@ -27,8 +27,8 @@
     sideBarMenu.sideBarBlurType = DFSideBarBlurTypeLight;
     sideBarMenu.textColor = [UIColor colorWithRed:(75/255.f) green:(75/255.) blue:(75/255.f) alpha:1];
     sideBarMenu.circleColor = [UIColor colorWithRed:(75/255.f) green:(75/255.) blue:(75/255.f) alpha:1];
-    sideBarMenu.blurSideBar = YES;
-    sideBarMenu.blurBackground = NO;
+    sideBarMenu.blurSideBar = NO;
+    sideBarMenu.blurBackground = YES;
     [self presentViewController:sideBarMenu animated:YES completion:nil];
 }
 
